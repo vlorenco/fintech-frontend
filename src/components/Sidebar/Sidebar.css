@@ -1,0 +1,117 @@
+/* ===== SIDEBAR FIXA (tema escuro) ===== */
+
+.sidebar {
+  width: 260px;
+  background-color: #0f172a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #1e253d;
+  min-height: 100vh;
+}
+
+/* cabeçalho da marca */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid #1e253d;
+}
+
+.brand-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 0.75rem;
+  background-image: linear-gradient(135deg, #7c3aed, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.brand-text-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.brand-text-sub {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  line-height: 1.2;
+}
+
+/* links da navegação */
+.nav-section {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #e5e7eb;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background-color: transparent;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.nav-link:hover {
+  background-color: #1e253d;
+}
+
+.nav-link.active {
+  color: #fff;
+  background-image: linear-gradient(90deg, #7c3aed, #06b6d4);
+}
+
+.small-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* rodapé da sidebar */
+.nav-bottom {
+  border-top: 1px solid #1e253d;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* botão "Sair" */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  background-color: #0a0f1e;
+  border: 1px solid #7f1d1d;
+  border-radius: 0.5rem;
+  color: #fff;
+
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.logout-btn:hover {
+  background-color: #7f1d1d;
+  border-color: #7f1d1d;
+  color: #fff;
+}
