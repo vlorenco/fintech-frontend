@@ -6,7 +6,7 @@ import {
   DespesasIcon,
   MetasIcon,
   LogoutIcon,
-} from "./icons"; 
+} from "./Icons";
 
 function Sidebar() {
   function handleLogout() {
