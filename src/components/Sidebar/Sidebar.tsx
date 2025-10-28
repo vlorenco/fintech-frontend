@@ -8,7 +8,11 @@ import {
   LogoutIcon,
 } from "./Icons";
 
+import { useTheme } from "../../hooks/useTheme";
+
 function Sidebar() {
+  const { theme, toggleTheme } = useTheme();
+
   function handleLogout() {
     console.log("logout...");
   }
@@ -50,6 +54,10 @@ function Sidebar() {
       </nav>
 
       <div className="nav-bottom">
+        <button className="theme-btn" onClick={toggleTheme}>
+          <span>{theme === "dark" ? "Tema claro ☀" : "Tema escuro 🌙"}</span>
+        </button>
+
         <button className="logout-btn" onClick={handleLogout}>
           <span>Sair</span>
           <LogoutIcon className="small-icon" />

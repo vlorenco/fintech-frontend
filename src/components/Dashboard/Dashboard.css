@@ -1,12 +1,10 @@
-/* container geral da página do dashboard */
 .dashboard-page {
-  color: #fff;
-  padding: 0; /* quem dá padding é .main-content no App.css */
-  background-color: #0a0f1a; /* mesma cor da main-content */
-  min-height: 100vh;
+  color: var(--text-primary);
+  padding: 0;
+  background-color: transparent;
+  min-height: auto;
 }
 
-/* header do dashboard (título e subtítulo) */
 .dashboard-header {
   margin-bottom: 2rem;
 }
@@ -14,18 +12,17 @@
 .dashboard-title {
   font-size: 2rem;
   font-weight: 600;
-  color: #c7b7ff; /* roxo clarinho */
+  color: #c7b7ff;
   margin: 0 0 0.5rem 0;
 }
 
 .dashboard-subtitle {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.4;
   margin: 0;
 }
 
-/* linha com os 4 cards de estatística */
 .stat-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -33,14 +30,14 @@
   margin-bottom: 2rem;
 }
 
-/* cartão pequeno com valor/variação */
 .stat-card {
-  background-color: #1a1f2f;
-  border: 1px solid #2a314a;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 0.5rem;
   padding: 1rem 1rem 1.25rem 1rem;
   display: flex;
   flex-direction: column;
+  color: var(--text-primary);
 }
 
 .stat-top {
@@ -50,7 +47,7 @@
 }
 
 .stat-label {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.3;
   font-weight: 500;
@@ -67,7 +64,7 @@
 
 .stat-value {
   margin-top: 0.75rem;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.2;
@@ -81,125 +78,227 @@
 }
 
 .stat-variation-positive {
-  color: #10b981; /* verde bom */
+  color: #10b981;
 }
 
 .stat-variation-negative {
-  color: #22c55e; /* você pode trocar pra vermelho se quiser que "negativo" = ruim */
+  color: #ef4444;
 }
 
 .stat-variation-neutral {
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
-/* linha dos gráficos (2 colunas lado a lado) */
 .charts-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 420px 1fr;
   gap: 1.5rem;
+  align-items: stretch;
 }
 
-/* card grande de gráfico */
-.chart-card {
-  background-color: #1a1f2f;
-  border: 1px solid #2a314a;
+/* 🔻 Responsivo: empilha os cards quando a tela fica estreita */
+@media (max-width: 800px) {
+  .charts-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.activity-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 0.5rem;
   padding: 1.25rem 1rem;
   display: flex;
   flex-direction: column;
-  min-height: 320px;
+  color: var(--text-primary);
+  min-height: 400px;
 }
 
-.chart-header {
-  margin-bottom: 1.5rem;
+.activity-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1.25rem 0;
 }
 
-.chart-title {
-  color: #fff;
-  font-size: 1.1rem;
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.activity-row {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.activity-left {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  min-width: 200px;
+}
+
+.activity-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.activity-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.activity-main {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.activity-time {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.activity-value {
+  font-size: 1rem;
   font-weight: 600;
 }
 
-.chart-subtitle {
-  color: #94a3b8;
-  font-size: 0.9rem;
-  margin-top: 0.25rem;
+.activity-value-in {
+  color: #10b981;
 }
 
-/* --- gráfico de linha fake (lado esquerdo) --- */
-.line-chart-wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  min-height: 220px;
+.activity-value-out {
+  color: #ef4444;
 }
 
-.line-chart-ylabels {
+.chart-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 0.5rem;
+  padding: 1.25rem 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  color: #94a3b8;
-  font-size: 0.8rem;
-  min-width: 50px;
-}
+  color: var(--text-primary);
+  min-height: 400px;
+  min-width: 0;
 
-.line-chart-area {
-  flex: 1;
-  background: radial-gradient(
-    circle at 20% 20%,
-    rgba(124, 58, 237, 0.4) 0%,
-    rgba(15, 23, 42, 0) 70%
-  );
-  border-radius: 0.5rem;
-  position: relative;
-  border: 1px solid rgba(124, 58, 237, 0.4);
-  background-color: rgba(15, 23, 42, 0.2);
+  /* ✅ garante que nada "vaze" pra fora visualmente */
   overflow: hidden;
 }
 
-/* curva roxa simulando crescimento */
-.line-chart-gradient {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 60%;
-  height: 100%;
-  border-top-left-radius: 999px;
-  background: linear-gradient(
-    to top right,
-    rgba(124, 58, 237, 0.6),
-    rgba(15, 23, 42, 0) 70%
-  );
-  box-shadow: 0 0 40px 20px rgba(124, 58, 237, 0.4);
-}
-
-/* --- gráfico de barras fake (lado direito) --- */
-.bar-chart-wrapper {
-  display: flex;
-  flex-direction: column;
-  color: #94a3b8;
-  font-size: 0.9rem;
-}
-
-.bar-chart-header {
+.chart-header {
   margin-bottom: 1rem;
 }
 
-.bar-chart-label {
-  color: #94a3b8;
+.chart-title {
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0;
 }
 
-.bar-chart-area {
+.chart-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.3;
+  margin-top: 0.25rem;
+}
+
+/* 🔁 área geral do gráfico agora nunca fica maior que o card */
+.chart-simple {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 1rem;
+
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: nowrap;
+}
+
+.chart-left-scale {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 260px;
+  min-width: 70px;
+  flex-shrink: 0; /* impede que o eixo vertical suma */
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--text-secondary);
+}
+
+/* 🔁 as barras agora se distribuem dentro do espaço disponível */
+.chart-bars-area {
   display: flex;
   align-items: flex-end;
+  flex: 1;
+  width: 100%;
+  height: 260px;
+
+  justify-content: space-between;
   gap: 1rem;
-  min-height: 180px;
-  padding-top: 1rem;
 }
 
-.bar {
-  width: 40px;
-  background-color: #06f8ff; /* azul neon */
-  border-radius: 0.4rem;
-  box-shadow: 0 0 20px rgba(6, 248, 255, 0.5);
+.chart-bar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.2;
+
+  /* ✅ cada coluna divide o espaço igualmente */
+  flex: 1;
+  min-width: 0;
+}
+
+/* 🔁 barra ocupa 100% da coluna, mas tem limite máximo */
+.chart-bar {
+  width: 100%;
+  max-width: 80px;
+  border-radius: 0.5rem;
+  background-color: #00fff5;
+  box-shadow: none;
+  border: none;
+}
+
+.chart-bar-h1 {
+  height: 240px;
+}
+
+.chart-bar-h2 {
+  height: 210px;
+}
+
+.chart-bar-h3 {
+  height: 170px;
+}
+
+.chart-bar-h4 {
+  height: 250px;
+}
+
+.chart-bar-label {
+  font-size: 1rem;
+  line-height: 1.2;
+  color: var(--text-secondary);
+  text-align: center;
 }

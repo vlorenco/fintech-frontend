@@ -1,7 +1,8 @@
 import { useState } from "react";
+import "../components/Dashboard/Dashboard.css";
 import StatCard from "../components/Dashboard/StatCard";
 import ChartCard from "../components/Dashboard/ChartCard";
-import "../components/Dashboard/Dashboard.css";
+import RecentActivity from "../components/Dashboard/RecentActivity";
 
 type DashboardData = {
   totalInvestido: number;
@@ -10,9 +11,15 @@ type DashboardData = {
   rendaMensal: number;
 };
 
+type ActivityItem = {
+  titulo: string;
+  quando: string;
+  valor: string;
+  tipo: "in" | "out";
+  corDot: string;
+};
+
 export default function DashboardPage() {
-  // Valores mockados só pra exibir na UI.
-  // A gente usa useState pra mostrar que sabemos trabalhar com estado.
   const [data] = useState<DashboardData>({
     totalInvestido: 0,
     saldoAtual: 0,
@@ -20,9 +27,39 @@ export default function DashboardPage() {
     rendaMensal: 0,
   });
 
+  const [atividades] = useState<ActivityItem[]>([
+    {
+      titulo: "Investimento em AAPL",
+      quando: "2 horas atrás",
+      valor: "+R$2.500,00",
+      tipo: "in",
+      corDot: "#c084fc",
+    },
+    {
+      titulo: "Dividendos recebidos",
+      quando: "1 dia atrás",
+      valor: "+R$180,50",
+      tipo: "in",
+      corDot: "#4ade80",
+    },
+    {
+      titulo: "Pagamento Netflix",
+      quando: "3 dias atrás",
+      valor: "-R$15,99",
+      tipo: "out",
+      corDot: "#fb7185",
+    },
+    {
+      titulo: "Conta de luz paga",
+      quando: "5 dias atrás",
+      valor: "-R$180,50",
+      tipo: "out",
+      corDot: "#fb7185",
+    },
+  ]);
+
   return (
     <section className="dashboard-page">
-      {/* Cabeçalho */}
       <header className="dashboard-header">
         <h1 className="dashboard-title">Dashboard Financeiro</h1>
         <p className="dashboard-subtitle">
@@ -30,7 +67,6 @@ export default function DashboardPage() {
         </p>
       </header>
 
-      {/* Cards de resumo */}
       <div className="stat-row">
         <StatCard
           titulo="Total Investido"
@@ -131,37 +167,41 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* Gráficos fake (somente front) */}
       <div className="charts-row">
-        <ChartCard
-          titulo="Evolução dos Investimentos"
-          subtitulo="Últimos 7 meses"
-        >
-          <div className="line-chart-wrapper">
-            <div className="line-chart-ylabels">
-              <span>R$10k</span>
-              <span>R$8k</span>
-              <span>R$5k</span>
-              <span>R$3k</span>
-            </div>
-
-            <div className="line-chart-area">
-              <div className="line-chart-gradient" />
-            </div>
-          </div>
-        </ChartCard>
+        <div className="activity-card">
+          <RecentActivity itens={atividades} />
+        </div>
 
         <ChartCard titulo="Gastos Semanais" subtitulo="Este mês">
-          <div className="bar-chart-wrapper">
-            <div className="bar-chart-header">
-              <div className="bar-chart-label">R$3200</div>
+          <div className="chart-simple">
+            <div className="chart-left-scale">
+              <span>R$3400</span>
+              <span>R$2550</span>
+              <span>R$1700</span>
+              <span>R$850</span>
+              <span>R$0</span>
             </div>
 
-            <div className="bar-chart-area">
-              <div className="bar" style={{ height: "140px" }} />
-              <div className="bar" style={{ height: "135px" }} />
-              <div className="bar" style={{ height: "145px" }} />
-              <div className="bar" style={{ height: "180px" }} />
+            <div className="chart-bars-area">
+              <div className="chart-bar-col">
+                <div className="chart-bar chart-bar-h1" />
+                <span className="chart-bar-label">Week 1</span>
+              </div>
+
+              <div className="chart-bar-col">
+                <div className="chart-bar chart-bar-h2" />
+                <span className="chart-bar-label">Week 2</span>
+              </div>
+
+              <div className="chart-bar-col">
+                <div className="chart-bar chart-bar-h3" />
+                <span className="chart-bar-label">Week 3</span>
+              </div>
+
+              <div className="chart-bar-col">
+                <div className="chart-bar chart-bar-h4" />
+                <span className="chart-bar-label">Week 4</span>
+              </div>
             </div>
           </div>
         </ChartCard>

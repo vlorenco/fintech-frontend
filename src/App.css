@@ -1,29 +1,66 @@
-/* casca geral do app: sidebar à esquerda, conteúdo à direita */
+/* tema escuro */
+.theme-dark {
+  --bg-app: #0a0f1a;
+  --bg-sidebar: #0f172a;
+  --bg-card: #1a1f2f;
+
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+
+  --border-card: #2a314a;
+}
+
+/* tema claro */
+.theme-light {
+  --bg-app: #f5f5f5;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+
+  --text-primary: #0f172a;
+  --text-secondary: #4b5563;
+
+  --border-card: #d1d5db;
+}
+
+/* layout da aplicação */
 .app-shell {
   display: flex;
   min-height: 100vh;
-
-  /* fundo da área principal (mais escuro que a sidebar) */
-  background-color: #0a0f1a;
-
-  color: #f8fafc;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
 }
 
-/* área da direita onde entram as páginas (DashboardPage etc.) */
 .main-content {
   flex: 1;
-
-  /* precisa bater com .app-shell pra parecer tudo uma área só */
-  background-color: #0a0f1a;
-  color: #f8fafc;
-
+  background-color: var(--bg-app);
+  color: var(--text-primary);
   padding: 2rem;
   overflow-y: auto;
 }
 
-/* só um estilo base pros títulos em páginas */
 .main-content h1,
 .main-content h2 {
   font-weight: 600;
   margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* cards reutilizáveis (dashboard e CRUD) */
+.stat-card,
+.chart-card,
+.crud-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-primary);
+}
+
+/* textos secundários */
+.dashboard-subtitle,
+.crud-subtitle,
+.stat-label,
+.chart-subtitle,
+.form-label,
+.table-empty,
+.crud-table th {
+  color: var(--text-secondary);
 }

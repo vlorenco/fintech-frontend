@@ -1,33 +1,28 @@
-/* Sidebar fixa do lado esquerdo */
 .sidebar {
   width: 260px;
-  background-color: #0f172a; /* azul petróleo escuro da sidebar */
-  color: #fff;
+  background-color: var(--bg-sidebar);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
-
-  /* separação visual da área de conteúdo */
-  border-right: 1px solid #1e253d;
-
-  min-height: 100vh; /* ocupa toda a altura da janela */
+  border-right: 1px solid var(--border-card);
+  min-height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", sans-serif;
 }
 
-/* Topo da sidebar: bloco com "Fintech / Gestão Financeira" */
 .brand {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   padding: 1.25rem 1rem;
-  border-bottom: 1px solid #1e253d;
+  border-bottom: 1px solid var(--border-card);
 }
 
 .brand-avatar {
   width: 44px;
   height: 44px;
   border-radius: 0.75rem;
-  background-image: linear-gradient(135deg, #7c3aed, #06b6d4); /* roxo -> azul */
+  background-image: linear-gradient(135deg, #7c3aed, #06b6d4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,92 +35,94 @@
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.2;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .brand-text-sub {
   font-size: 0.8rem;
-  color: #9ca3af;
+  color: var(--text-secondary);
   line-height: 1.2;
 }
 
-/* Container da lista de links */
 .nav-section {
-  flex: 1; /* ocupa todo espaço disponível até o rodapé */
+  flex: 1;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-/* Cada link de navegação (Dashboard, Recebimentos etc.) */
 .nav-link {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-
   font-weight: 500;
-  color: #e5e7eb;
+  color: var(--text-primary);
   text-decoration: none;
-
   border: 1px solid transparent;
   background-color: transparent;
-
   font-size: 1rem;
   line-height: 1.2;
 }
 
-/* Hover no link */
 .nav-link:hover {
-  background-color: #1e253d;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Quando a rota está ativa (classe "active" vem do NavLink) */
 .nav-link.active {
   color: #fff;
-  background-image: linear-gradient(90deg, #7c3aed, #06b6d4); /* roxo -> azul */
+  background-image: linear-gradient(90deg, #7c3aed, #06b6d4);
 }
 
-/* Ícones SVG que vêm do Icons.tsx
-   Eles herdam a cor atual via stroke="currentColor" nos .svg
-*/
 .small-icon {
   width: 18px;
   height: 18px;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
-/* Rodapé da sidebar (botão Sair) */
 .nav-bottom {
-  border-top: 1px solid #1e253d;
+  border-top: 1px solid var(--border-card);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-/* Botão "Sair" */
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--border-card);
+  border-radius: 0.5rem;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: left;
+}
+.theme-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
 .logout-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-
-  background-color: #0a0f1e; /* tom mais escuro pra destacar o botão */
+  background-color: #0a0f1e;
   border: 1px solid #7f1d1d;
   border-radius: 0.5rem;
   color: #fff;
-
   padding: 0.75rem 1rem;
   font-weight: 500;
   cursor: pointer;
   font-size: 0.95rem;
 }
-
-/* Hover do botão "Sair" */
 .logout-btn:hover {
   background-color: #7f1d1d;
   border-color: #7f1d1d;

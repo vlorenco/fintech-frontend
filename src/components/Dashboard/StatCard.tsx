@@ -3,8 +3,8 @@ type StatCardProps = {
   valor: string;
   variacao: string;
   variacaoCor: "positivo" | "negativo" | "neutro";
-  iconBg: string; // cor de fundo do quadradinho do ícone
-  icon: React.ReactNode; // svg passado pronto
+  iconBg: string;
+  icon: React.ReactNode;
 };
 
 export default function StatCard({
@@ -19,11 +19,11 @@ export default function StatCard({
     <div className="stat-card">
       <div className="stat-top">
         <div className="stat-label">{titulo}</div>
-
         <div
           className="stat-icon"
           style={{
             backgroundColor: iconBg,
+            color: "#fff",
           }}
         >
           {icon}
