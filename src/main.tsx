@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css"; // estilos globais/reset básicos
+
+import { ThemeProvider } from "./contexts/ThemeContext/ThemeProvider";
+import App from "./App";
+
+import "./styles/global.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  // StrictMode ajuda a identificar problemas durante o desenvolvimento
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
