@@ -1,22 +1,21 @@
 import "./Sidebar.css";
 import SidebarLink from "./SidebarLink";
 import {
-  LayoutDashboard,
-  ArrowDownCircle,
-  ArrowUpCircle,
-  Target,
-  LogOut,
-} from "lucide-react";
+  DashboardIcon,
+  RecebimentosIcon,
+  DespesasIcon,
+  MetasIcon,
+  LogoutIcon,
+} from "./icons"; 
 
 function Sidebar() {
   function handleLogout() {
     console.log("logout...");
-    // depois você coloca lógica real de logout aqui (limpar token, etc.)
   }
 
   return (
     <aside className="sidebar">
-      {/* Topo: logo e nome */}
+      {/* Logo / nome do sistema */}
       <div className="brand">
         <div className="brand-avatar">F</div>
         <div>
@@ -25,38 +24,34 @@ function Sidebar() {
         </div>
       </div>
 
-      {/* Links de navegação */}
+      {/* Navegação */}
       <nav className="nav-section">
         <SidebarLink
           to="/dashboard"
-          icon={<LayoutDashboard className="small-icon" />}
+          icon={<DashboardIcon />}
           label="Dashboard"
         />
 
         <SidebarLink
           to="/recebimentos"
-          icon={<ArrowDownCircle className="small-icon" />}
+          icon={<RecebimentosIcon />}
           label="Recebimentos"
         />
 
         <SidebarLink
           to="/despesas"
-          icon={<ArrowUpCircle className="small-icon" />}
+          icon={<DespesasIcon />}
           label="Despesas"
         />
 
-        <SidebarLink
-          to="/metas"
-          icon={<Target className="small-icon" />}
-          label="Metas"
-        />
+        <SidebarLink to="/metas" icon={<MetasIcon />} label="Metas" />
       </nav>
 
-      {/* Rodapé da sidebar */}
+      {/* Botão sair */}
       <div className="nav-bottom">
         <button className="logout-btn" onClick={handleLogout}>
           <span>Sair</span>
-          <LogOut className="small-icon" />
+          <LogoutIcon />
         </button>
       </div>
     </aside>
