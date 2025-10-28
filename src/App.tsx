@@ -1,42 +1,40 @@
 import "./App.css";
 
-import Sidebar from "./components/Sidebar/Sidebar";
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// importa as páginas que são suas
+// layout fixo
+import Sidebar from "./components/Sidebar/Sidebar";
+
+// páginas
 import DashboardPage from "./pages/DashboardPage";
 import RecebimentosPage from "./pages/RecebimentosPage";
 import DespesasPage from "./pages/DespesasPage";
 import MetasPage from "./pages/MetasPage";
-// 
-// import LoginPage from "./pages/LoginPage";
+
+// Se já existir uma página de erro personalizada, você pode importar assim:
+// import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app-shell">
-        {/* Lado esquerdo: sidebar fixa */}
+        {/* Sidebar fixa no lado esquerdo */}
         <Sidebar />
 
-        {/* Lado direito: conteúdo que muda conforme a rota */}
+        {/* Área principal das rotas */}
         <main className="main-content">
           <Routes>
-            {/* redireciona "/" pra /dashboard */}
+            {/* Redireciona "/" para "/dashboard" */}
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
+            {/* Rotas principais do app */}
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/recebimentos" element={<RecebimentosPage />} />
             <Route path="/despesas" element={<DespesasPage />} />
             <Route path="/metas" element={<MetasPage />} />
-
-            {/* rota de login vai entrar aqui*/}
-            {/*
-            <Route path="/login" element={<LoginPage />} />
-            */}
-
-            {/* fallback pra rota que não existe */}
-            <Route path="*" element={<h1>Página não encontrada</h1>} />
+            
+           
+            
           </Routes>
         </main>
       </div>

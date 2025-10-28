@@ -1,6 +1,5 @@
 import "./Sidebar.css";
 import SidebarLink from "./SidebarLink";
-
 import {
   DashboardIcon,
   RecebimentosIcon,
@@ -16,7 +15,6 @@ function Sidebar() {
 
   return (
     <aside className="sidebar">
-      {/* Logo / nome do sistema */}
       <div className="brand">
         <div className="brand-avatar">F</div>
         <div>
@@ -25,7 +23,6 @@ function Sidebar() {
         </div>
       </div>
 
-      {/* Navegação */}
       <nav className="nav-section">
         <SidebarLink
           to="/dashboard"
@@ -52,12 +49,9 @@ function Sidebar() {
         />
       </nav>
 
-      {/* Botão sair */}
       <div className="nav-bottom">
         <button className="logout-btn" onClick={handleLogout}>
           <span>Sair</span>
-
-          {/* Ícone de logout alinhado à direita */}
           <LogoutIcon className="small-icon" />
         </button>
       </div>

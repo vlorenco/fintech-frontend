@@ -1,0 +1,205 @@
+/* container geral da página do dashboard */
+.dashboard-page {
+  color: #fff;
+  padding: 0; /* quem dá padding é .main-content no App.css */
+  background-color: #0a0f1a; /* mesma cor da main-content */
+  min-height: 100vh;
+}
+
+/* header do dashboard (título e subtítulo) */
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #c7b7ff; /* roxo clarinho */
+  margin: 0 0 0.5rem 0;
+}
+
+.dashboard-subtitle {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* linha com os 4 cards de estatística */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* cartão pequeno com valor/variação */
+.stat-card {
+  background-color: #1a1f2f;
+  border: 1px solid #2a314a;
+  border-radius: 0.5rem;
+  padding: 1rem 1rem 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stat-label {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-value {
+  margin-top: 0.75rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.stat-variation {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stat-variation-positive {
+  color: #10b981; /* verde bom */
+}
+
+.stat-variation-negative {
+  color: #22c55e; /* você pode trocar pra vermelho se quiser que "negativo" = ruim */
+}
+
+.stat-variation-neutral {
+  color: #94a3b8;
+}
+
+/* linha dos gráficos (2 colunas lado a lado) */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* card grande de gráfico */
+.chart-card {
+  background-color: #1a1f2f;
+  border: 1px solid #2a314a;
+  border-radius: 0.5rem;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.chart-header {
+  margin-bottom: 1.5rem;
+}
+
+.chart-title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.chart-subtitle {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* --- gráfico de linha fake (lado esquerdo) --- */
+.line-chart-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  min-height: 220px;
+}
+
+.line-chart-ylabels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  min-width: 50px;
+}
+
+.line-chart-area {
+  flex: 1;
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(124, 58, 237, 0.4) 0%,
+    rgba(15, 23, 42, 0) 70%
+  );
+  border-radius: 0.5rem;
+  position: relative;
+  border: 1px solid rgba(124, 58, 237, 0.4);
+  background-color: rgba(15, 23, 42, 0.2);
+  overflow: hidden;
+}
+
+/* curva roxa simulando crescimento */
+.line-chart-gradient {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  border-top-left-radius: 999px;
+  background: linear-gradient(
+    to top right,
+    rgba(124, 58, 237, 0.6),
+    rgba(15, 23, 42, 0) 70%
+  );
+  box-shadow: 0 0 40px 20px rgba(124, 58, 237, 0.4);
+}
+
+/* --- gráfico de barras fake (lado direito) --- */
+.bar-chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.bar-chart-header {
+  margin-bottom: 1rem;
+}
+
+.bar-chart-label {
+  color: #94a3b8;
+}
+
+.bar-chart-area {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  min-height: 180px;
+  padding-top: 1rem;
+}
+
+.bar {
+  width: 40px;
+  background-color: #06f8ff; /* azul neon */
+  border-radius: 0.4rem;
+  box-shadow: 0 0 20px rgba(6, 248, 255, 0.5);
+}

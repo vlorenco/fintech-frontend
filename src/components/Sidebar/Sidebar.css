@@ -1,17 +1,20 @@
 /* Sidebar fixa do lado esquerdo */
 .sidebar {
   width: 260px;
-  background-color: #0f172a; /* azul bem escuro */
+  background-color: #0f172a; /* azul petróleo escuro da sidebar */
   color: #fff;
   display: flex;
   flex-direction: column;
+
+  /* separação visual da área de conteúdo */
   border-right: 1px solid #1e253d;
+
   min-height: 100vh; /* ocupa toda a altura da janela */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", sans-serif;
 }
 
-/* Topo da sidebar: "Fintech / Gestão Financeira" com quadradinho colorido */
+/* Topo da sidebar: bloco com "Fintech / Gestão Financeira" */
 .brand {
   display: flex;
   align-items: center;
@@ -80,15 +83,14 @@
   background-color: #1e253d;
 }
 
-/* Quando a rota está ativa.
-   A classe "active" vem do NavLink, lá no SidebarLink.tsx */
+/* Quando a rota está ativa (classe "active" vem do NavLink) */
 .nav-link.active {
   color: #fff;
   background-image: linear-gradient(90deg, #7c3aed, #06b6d4); /* roxo -> azul */
 }
 
-/* Ícones (os <svg /> que criamos em Icons.tsx)
-   Eles herdam cor de "color".
+/* Ícones SVG que vêm do Icons.tsx
+   Eles herdam a cor atual via stroke="currentColor" nos .svg
 */
 .small-icon {
   width: 18px;
@@ -112,7 +114,7 @@
   justify-content: space-between;
   gap: 0.5rem;
 
-  background-color: #0a0f1e;
+  background-color: #0a0f1e; /* tom mais escuro pra destacar o botão */
   border: 1px solid #7f1d1d;
   border-radius: 0.5rem;
   color: #fff;
@@ -123,7 +125,7 @@
   font-size: 0.95rem;
 }
 
-/* Hover do botão "Sair" (fica mais vermelho) */
+/* Hover do botão "Sair" */
 .logout-btn:hover {
   background-color: #7f1d1d;
   border-color: #7f1d1d;

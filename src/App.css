@@ -2,20 +2,26 @@
 .app-shell {
   display: flex;
   min-height: 100vh;
-  background-color: #0f172a; /* mantém coerência com tema escuro inicial */
+
+  /* fundo da área principal (mais escuro que a sidebar) */
+  background-color: #0a0f1a;
+
   color: #f8fafc;
 }
 
-/* área da direita onde entram as páginas */
+/* área da direita onde entram as páginas (DashboardPage etc.) */
 .main-content {
   flex: 1;
-  background-color: #0f172a; /* pode mudar depois pra claro no tema light */
+
+  /* precisa bater com .app-shell pra parecer tudo uma área só */
+  background-color: #0a0f1a;
   color: #f8fafc;
-  padding: 2rem; /* espaçamento interno */
-  overflow-y: auto; /* se a página for longa */
+
+  padding: 2rem;
+  overflow-y: auto;
 }
 
-/* Exemplo básico de estilo de título dentro das páginas */
+/* só um estilo base pros títulos em páginas */
 .main-content h1,
 .main-content h2 {
   font-weight: 600;
