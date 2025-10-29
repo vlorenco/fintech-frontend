@@ -96,7 +96,7 @@
   align-items: stretch;
 }
 
-/* 🔻 Responsivo: empilha os cards quando a tela fica estreita */
+
 @media (max-width: 800px) {
   .charts-row {
     grid-template-columns: 1fr;
@@ -196,7 +196,7 @@
   min-height: 400px;
   min-width: 0;
 
-  /* ✅ garante que nada "vaze" pra fora visualmente */
+  
   overflow: hidden;
 }
 
@@ -219,7 +219,7 @@
   margin-top: 0.25rem;
 }
 
-/* 🔁 área geral do gráfico agora nunca fica maior que o card */
+
 .chart-simple {
   display: flex;
   flex-direction: row;
@@ -238,13 +238,13 @@
   justify-content: space-between;
   height: 260px;
   min-width: 70px;
-  flex-shrink: 0; /* impede que o eixo vertical suma */
+  flex-shrink: 0; 
   font-size: 0.95rem;
   line-height: 1.3;
   color: var(--text-secondary);
 }
 
-/* 🔁 as barras agora se distribuem dentro do espaço disponível */
+
 .chart-bars-area {
   display: flex;
   align-items: flex-end;
@@ -265,12 +265,12 @@
   font-size: 1rem;
   line-height: 1.2;
 
-  /* ✅ cada coluna divide o espaço igualmente */
+  
   flex: 1;
   min-width: 0;
 }
 
-/* 🔁 barra ocupa 100% da coluna, mas tem limite máximo */
+
 .chart-bar {
   width: 100%;
   max-width: 80px;

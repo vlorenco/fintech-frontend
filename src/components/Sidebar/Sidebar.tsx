@@ -9,16 +9,27 @@ import {
 } from "./Icons";
 
 import { useTheme } from "../../hooks/useTheme";
+import { useState } from "react";
 
 function Sidebar() {
   const { theme, toggleTheme } = useTheme();
+  const [open, setOpen] = useState(false);
 
   function handleLogout() {
     console.log("logout...");
   }
 
   return (
-    <aside className="sidebar">
+    <>
+      <button
+        className="sidebar-toggle"
+        aria-label="Toggle sidebar"
+        onClick={() => setOpen((s) => !s)}
+      >
+        ☰
+      </button>
+
+      <aside className={`sidebar ${open ? "open" : ""}`}>
       <div className="brand">
         <div className="brand-avatar">F</div>
         <div>
@@ -27,7 +38,12 @@ function Sidebar() {
         </div>
       </div>
 
-      <nav className="nav-section">
+      <nav
+        className="nav-section"
+        onClick={() => {
+          if (window.innerWidth < 768) setOpen(false);
+        }}
+      >
         <SidebarLink
           to="/dashboard"
           icon={<DashboardIcon className="small-icon" />}
@@ -64,6 +80,7 @@ function Sidebar() {
         </button>
       </div>
     </aside>
+    </>
   );
 }
 

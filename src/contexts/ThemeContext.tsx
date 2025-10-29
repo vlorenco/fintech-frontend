@@ -7,7 +7,7 @@ export type ThemeContextType = {
   toggleTheme: () => void;
 };
 
-// Criamos o contexto com valores padrão
+
 export const ThemeContext = createContext<ThemeContextType>({
   theme: "dark",
   toggleTheme: () => {},

@@ -1,4 +1,4 @@
-// Página para listar e controlar gastos
+
 
 export default function DespesasPage() {
   return (

@@ -1,12 +1,12 @@
-/* Página CRUD segue o tema atual (dark ou light) */
+
 .crud-page {
-  background-color: var(--bg-app);     /* antes era #0a0f1a */
-  color: var(--text-primary);          /* antes era #fff */
+  background-color: var(--bg-app);     
+  color: var(--text-primary);          
   padding: 0;
   min-height: 100vh;
 }
 
-/* Cabeçalho da página */
+
 .crud-header {
   margin-bottom: 2rem;
 }
@@ -14,28 +14,28 @@
 .crud-title {
   font-size: 2rem;
   font-weight: 600;
-  color: #c7b7ff; /* roxo clarinho de destaque */
+  color: #c7b7ff; 
   margin: 0 0 0.5rem 0;
 }
 
 .crud-subtitle {
-  color: var(--text-secondary);  /* antes era #94a3b8 */
+  color: var(--text-secondary);  
   font-size: 1rem;
   line-height: 1.4;
   margin: 0;
 }
 
-/* layout principal: formulário de um lado, tabela do outro */
+
 .crud-layout {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 1.5rem;
 }
 
-/* Cartões padrão */
+
 .crud-card {
-  background-color: var(--bg-card);       /* antes era #1a1f2f */
-  border: 1px solid var(--border-card);   /* antes era #2a314a */
+  background-color: var(--bg-card);       
+  border: 1px solid var(--border-card);   
   border-radius: 0.5rem;
   padding: 1.25rem 1rem;
   display: flex;
@@ -45,13 +45,13 @@
 }
 
 .crud-card-title {
-  color: var(--text-primary); /* antes #fff */
+  color: var(--text-primary); 
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
-/* Formulário */
+
 .crud-form {
   display: flex;
   flex-direction: column;
@@ -72,22 +72,22 @@
 
 .form-label {
   font-size: 0.85rem;
-  color: var(--text-secondary); /* antes era #94a3b8 */
+  color: var(--text-secondary); 
   font-weight: 500;
 }
 
-/* input usa as variáveis, então ele muda junto com o tema */
+
 .form-input {
-  background-color: var(--bg-app);      /* antes era #0f172a */
-  border: 1px solid var(--border-card); /* antes era #2a314a */
+  background-color: var(--bg-app);      
+  border: 1px solid var(--border-card); 
   border-radius: 0.5rem;
   padding: 0.6rem 0.75rem;
-  color: var(--text-primary);           /* antes era #fff */
+  color: var(--text-primary);           
   font-size: 0.95rem;
 }
 
 .form-input:focus {
-  outline: 2px solid #7c3aed; /* roxo destaque */
+  outline: 2px solid #7c3aed; 
   border-color: #7c3aed;
 }
 
@@ -109,11 +109,11 @@
 
 .form-status-msg {
   font-size: 0.8rem;
-  color: #10b981; /* verdinho sucesso */
+  color: #10b981; 
   margin-top: -0.5rem;
 }
 
-/* tabela/listagem */
+
 .table-wrapper {
   overflow-x: auto;
 }
@@ -127,12 +127,12 @@
 }
 
 .crud-table thead {
-  background-color: var(--bg-sidebar); /* antes era #0f172a */
+  background-color: var(--bg-sidebar); 
 }
 
 .crud-table th {
   text-align: left;
-  color: var(--text-secondary);         /* antes era #94a3b8 */
+  color: var(--text-secondary);         
   font-weight: 500;
   padding: 0.75rem;
   border-bottom: 1px solid var(--border-card);
@@ -144,19 +144,19 @@
 .crud-table td {
   padding: 0.75rem;
   border-bottom: 1px solid var(--border-card);
-  color: var(--text-primary);           /* antes era #e5e7eb */
+  color: var(--text-primary);           
   vertical-align: top;
   line-height: 1.3;
 }
 
 .table-empty {
   text-align: center;
-  color: var(--text-secondary);         /* antes era #94a3b8 */
+  color: var(--text-secondary);         
   font-style: italic;
   padding: 2rem 0;
 }
 
-/* botão de excluir (mantemos vermelho igual nos dois temas) */
+
 .danger-btn {
   background-color: #7f1d1d;
   color: #fff;

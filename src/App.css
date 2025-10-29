@@ -1,4 +1,4 @@
-/* tema escuro */
+
 .theme-dark {
   --bg-app: #0a0f1a;
   --bg-sidebar: #0f172a;
@@ -7,10 +7,10 @@
   --text-primary: #ffffff;
   --text-secondary: #94a3b8;
 
-  --border-card: #2a314a;
+  --border-card: transparent;
 }
 
-/* tema claro */
+
 .theme-light {
   --bg-app: #f5f5f5;
   --bg-sidebar: #ffffff;
@@ -19,10 +19,18 @@
   --text-primary: #0f172a;
   --text-secondary: #4b5563;
 
-  --border-card: #d1d5db;
+  --border-card: transparent;
 }
 
-/* layout da aplicação */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+}
+
+
 .app-shell {
   display: flex;
   min-height: 100vh;
@@ -38,6 +46,13 @@
   overflow-y: auto;
 }
 
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}
+
 .main-content h1,
 .main-content h2 {
   font-weight: 600;
@@ -45,7 +60,7 @@
   color: var(--text-primary);
 }
 
-/* cards reutilizáveis (dashboard e CRUD) */
+
 .stat-card,
 .chart-card,
 .crud-card {
@@ -54,7 +69,7 @@
   color: var(--text-primary);
 }
 
-/* textos secundários */
+
 .dashboard-subtitle,
 .crud-subtitle,
 .stat-label,
@@ -63,4 +78,17 @@
 .table-empty,
 .crud-table th {
   color: var(--text-secondary);
+}
+.app-shell {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+.main-content {
+  margin-left: 260px; 
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
 }
