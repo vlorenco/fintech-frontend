@@ -61,7 +61,7 @@ export default function DashboardPage() {
   return (
     <section className="dashboard-page">
       <header className="dashboard-header">
-        <h1 className="dashboard-title">Dashboard Financeiro</h1>
+        <h1 className="page-title-gradient">Dashboard Financeiro</h1>
         <p className="dashboard-subtitle">
           Acompanhe suas finanças e investimentos em tempo real
         </p>
