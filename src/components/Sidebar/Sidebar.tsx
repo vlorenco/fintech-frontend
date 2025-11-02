@@ -31,11 +31,11 @@ function Sidebar() {
 
       <aside className={`sidebar ${open ? "open" : ""}`}>
       <div className="brand">
-        <div className="brand-avatar">F</div>
-        <div>
-          <div className="brand-text-title">Fintech</div>
-          <div className="brand-text-sub">Gestão Financeira</div>
-        </div>
+        <img 
+          src="/images/logo.png" 
+          alt="Fintech Logo" 
+          className="brand-logo"
+        />
       </div>
 
       <nav
