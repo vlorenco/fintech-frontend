@@ -22,14 +22,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Verificar se o usuário está autenticado ao carregar a aplicação
     const checkAuth = () => {
       if (isAuthenticated()) {
-        // Aqui você pode fazer uma chamada para obter os dados do usuário
-        // Por enquanto, vou simular com dados básicos
         const token = localStorage.getItem('authToken');
         if (token) {
-          // Em um cenário real, você decodificaria o JWT ou faria uma chamada para /me
           setUser({
             id: 1,
             nome: "Usuário",

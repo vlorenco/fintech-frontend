@@ -40,7 +40,6 @@ export default function MetasPage() {
     descricao: "",
   });
 
-  // Carregar dados ao montar o componente
   useEffect(() => {
     loadData();
   }, []);
@@ -49,60 +48,38 @@ export default function MetasPage() {
     try {
       setLoading(true);
       const metasData = await metaService.getAll();
-      console.log("=== DADOS BRUTOS DAS METAS ===", metasData);
-      console.log("Tipo dos dados:", typeof metasData);
-      console.log("É array?", Array.isArray(metasData));
-      console.log("Length:", Array.isArray(metasData) ? metasData.length : "N/A");
-      
-      // Se não tiver dados, retornar array vazio
       if (!metasData) {
-        console.log("⚠️ metasData é null/undefined");
         setMetas([]);
         return;
       }
       
-      // Se for array vazio, retornar array vazio
       if (Array.isArray(metasData) && metasData.length === 0) {
-        console.log("✅ Array vazio - nenhuma meta cadastrada");
         setMetas([]);
         return;
       }
       
-      // Converter para array se necessário
       const metasArray = Array.isArray(metasData) ? metasData : [metasData];
-      console.log("Total de metas no array:", metasArray.length);
-      console.log("Primeira meta (exemplo):", JSON.stringify(metasArray[0], null, 2));
       
-      // Normalizar dados - garantir que idMeta existe
       const metasNormalizadas = metasArray
-        .filter(meta => {
-          if (!meta || typeof meta !== 'object') {
-            console.warn("⚠️ Meta inválida filtrada:", meta);
-            return false;
-          }
-          return true;
-        })
+        .filter(meta => meta && typeof meta === 'object')
         .map((meta: any) => {
           if (!meta.idMeta && meta.id) {
-            console.warn("⚠️ Backend retornou 'id' ao invés de 'idMeta', normalizando...");
             return { ...meta, idMeta: meta.id };
           }
           return meta;
         });
       
-      console.log("✅ Metas após normalização:", metasNormalizadas.length, "metas válidas");
-      console.log("IDs das metas:", metasNormalizadas.map(m => m.idMeta));
       setMetas(metasNormalizadas);
     } catch (error) {
-      console.error("❌ Erro ao carregar metas:", error);
+      console.error("Erro ao carregar metas:", error);
       setErrorMessage("Erro ao carregar metas. Verifique se o servidor está rodando.");
-      setMetas([]); // Garantir array vazio em caso de erro
+      setMetas([]);
     } finally {
       setLoading(false);
     }
   };
 
-  // Calcular estatísticas
+
   const metasAtivas = metas.filter(m => m.status === "ATIVA");
   const metasPausadas = metas.filter(m => m.status === "PAUSADA");
   const valorTotalObjetivo = metas.reduce((acc, m) => acc + m.valorObjetivo, 0);
@@ -110,19 +87,14 @@ export default function MetasPage() {
   const progressoGeral = valorTotalObjetivo > 0 ? (valorTotalAtual / valorTotalObjetivo) * 100 : 0;
 
   const handleOpenModal = (meta?: Meta) => {
-    console.log("=== handleOpenModal chamado ===");
     if (meta) {
-      console.log("Meta completa recebida:", JSON.stringify(meta, null, 2));
-      console.log("meta.idMeta:", meta.idMeta);
-      console.log("Todas as propriedades da meta:", Object.keys(meta));
       setEditingId(meta.idMeta);
       setFormData({
         descricao: meta.descricao,
         valorObjetivo: meta.valorObjetivo.toString(),
-        dataMeta: meta.dataMeta.split('T')[0], // Converter para formato de data do input
+        dataMeta: meta.dataMeta.split('T')[0],
       });
     } else {
-      console.log("Criando nova meta");
       setEditingId(null);
       setFormData({
         descricao: "",
@@ -176,18 +148,12 @@ export default function MetasPage() {
       };
 
       if (editingId) {
-        // Atualizar meta existente
-        console.log("Atualizando meta com ID:", editingId, metaData);
         await metaService.update(editingId, metaData);
         setSuccessMessage("Meta atualizada com sucesso!");
       } else {
-        // Criar nova meta
-        console.log("Criando nova meta:", metaData);
         await metaService.create(metaData as CreateMetaRequest);
         setSuccessMessage("Meta cadastrada com sucesso!");
       }
-
-      // Recarregar dados
       await loadData();
 
       setTimeout(() => {
@@ -227,11 +193,8 @@ export default function MetasPage() {
         descricao: contribuicaoData.descricao || "Contribuição"
       };
 
-      console.log("Contribuindo na meta:", contribuicaoMetaId, contribuicao);
       await metaService.contribuir(contribuicaoMetaId, contribuicao);
       setSuccessMessage("Contribuição adicionada com sucesso!");
-
-      // Recarregar dados
       await loadData();
 
       setTimeout(() => {
@@ -246,16 +209,11 @@ export default function MetasPage() {
   };
 
   const handlePausarMeta = async (id: number) => {
-    console.log("=== handlePausarMeta chamado ===");
-    console.log("ID recebido:", id);
-    console.log("Tipo do ID:", typeof id);
     if (!id) {
-      console.error("ID inválido - é undefined ou null");
       setErrorMessage("ID da meta inválido");
       return;
     }
     try {
-      console.log("Pausando meta com ID:", id);
       await metaService.pausar(id);
       setSuccessMessage("Meta pausada com sucesso!");
       await loadData();
@@ -281,17 +239,12 @@ export default function MetasPage() {
   };
 
   const handleDelete = async (id: number) => {
-    console.log("=== handleDelete chamado ===");
-    console.log("ID recebido:", id);
-    console.log("Tipo do ID:", typeof id);
     if (!id) {
-      console.error("ID inválido - é undefined ou null");
       setErrorMessage("ID da meta inválido");
       return;
     }
     if (window.confirm("Tem certeza que deseja excluir esta meta?")) {
       try {
-        console.log("Deletando meta com ID:", id);
         await metaService.delete(id);
         setSuccessMessage("Meta excluída com sucesso!");
         await loadData();
@@ -425,17 +378,6 @@ export default function MetasPage() {
         {metas.map((meta, index) => {
           const isAtiva = meta.status === "ATIVA";
           const isPausada = meta.status === "PAUSADA";
-          
-          // Debug: verificar se idMeta existe
-          console.log(`Meta #${index}:`, {
-            idMeta: meta.idMeta,
-            descricao: meta.descricao,
-            todasAsChaves: Object.keys(meta)
-          });
-          
-          if (!meta.idMeta) {
-            console.warn("⚠️ Meta sem idMeta:", JSON.stringify(meta, null, 2));
-          }
 
           return (
             <div key={meta.idMeta || index} className="meta-card">
@@ -491,47 +433,32 @@ export default function MetasPage() {
                 {isAtiva && (
                   <ActionButton
                     variant="contribute"
-                    onClick={() => {
-                      console.log("🔵 Botão Contribuir clicado - meta.idMeta:", meta.idMeta);
-                      handleOpenContribuicaoModal(meta.idMeta);
-                    }}
+                    onClick={() => handleOpenContribuicaoModal(meta.idMeta)}
                   />
                 )}
                 
                 {isAtiva && (
                   <ActionButton
                     variant="pause"
-                    onClick={() => {
-                      console.log("⏸️ Botão Pausar clicado - meta.idMeta:", meta.idMeta);
-                      handlePausarMeta(meta.idMeta);
-                    }}
+                    onClick={() => handlePausarMeta(meta.idMeta)}
                   />
                 )}
                 
                 {isPausada && (
                   <ActionButton
                     variant="reactivate"
-                    onClick={() => {
-                      console.log("▶️ Botão Reativar clicado - meta.idMeta:", meta.idMeta);
-                      handleReativarMeta(meta.idMeta);
-                    }}
+                    onClick={() => handleReativarMeta(meta.idMeta)}
                   />
                 )}
 
                 <ActionButton
                   variant="edit"
-                  onClick={() => {
-                    console.log("✏️ Botão Editar clicado - meta:", meta);
-                    handleOpenModal(meta);
-                  }}
+                  onClick={() => handleOpenModal(meta)}
                 />
                 
                 <ActionButton
                   variant="delete"
-                  onClick={() => {
-                    console.log("🗑️ Botão Excluir clicado - meta.idMeta:", meta.idMeta);
-                    handleDelete(meta.idMeta);
-                  }}
+                  onClick={() => handleDelete(meta.idMeta)}
                 />
               </div>
             </div>
@@ -548,7 +475,7 @@ export default function MetasPage() {
         )}
       </div>
 
-      {/* Modal para criar/editar meta */}
+
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}
@@ -613,7 +540,7 @@ export default function MetasPage() {
         </Modal>
       )}
 
-      {/* Modal para contribuição */}
+
       {isContribuicaoModalOpen && (
         <Modal
           isOpen={isContribuicaoModalOpen}

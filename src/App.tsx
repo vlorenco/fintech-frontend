@@ -1,10 +1,7 @@
 import "./App.css";
-
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import Sidebar from "./components/Sidebar/Sidebar";
 import ProtectedRoute from "./components/ProtectedRoute";
-
 import DashboardPage from "./pages/DashboardPage";
 import RecebimentosPage from "./pages/RecebimentosPage";
 import DespesasPage from "./pages/DespesasPage";
@@ -17,10 +14,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Rota de login - sem sidebar */}
         <Route path="/login" element={<LoginPage />} />
         
-        {/* Rotas principais - com sidebar e proteção */}
         <Route path="/" element={
           <ProtectedRoute>
             <Navigate to="/dashboard" replace />
@@ -82,7 +77,6 @@ function App() {
           </ProtectedRoute>
         } />
         
-        {/* Página de erro para rotas não encontradas */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

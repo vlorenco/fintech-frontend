@@ -1,8 +1,6 @@
 import api from "./api";
 import type { DashboardResumo, GraficoMensal, GastoPorCategoria } from "../types";
 
-// Observação: supondo que api.baseURL já inclua "/api"
-// Ex.: axios.create({ baseURL: "/api" })
 export const dashboardService = {
   // GET /api/dashboard/resumo?mes=MM&ano=YYYY (opcional)
   getResumo: async (mes?: number, ano?: number): Promise<DashboardResumo> => {
