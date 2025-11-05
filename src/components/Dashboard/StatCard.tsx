@@ -1,3 +1,5 @@
+import "./StatCard.css";
+
 type StatCardProps = {
   titulo: string;
   valor: string;
@@ -19,15 +21,7 @@ export default function StatCard({
     <div className="stat-card">
       <div className="stat-top">
         <div className="stat-label">{titulo}</div>
-        <div
-          className="stat-icon"
-          style={{
-            backgroundColor: iconBg,
-            color: "#fff",
-          }}
-        >
-          {icon}
-        </div>
+      
       </div>
 
       <div className="stat-value">{valor}</div>

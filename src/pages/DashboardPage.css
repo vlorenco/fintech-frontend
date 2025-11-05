@@ -1,4 +1,4 @@
-.recebimentos-page {
+.despesas-page {
   background-color: var(--bg-app);
   color: var(--text-primary);
   min-height: 100vh;
@@ -53,9 +53,9 @@
   margin-bottom: 2rem;
 }
 
-.recebimentos-grid {
+.items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1.5rem;
 }
 
@@ -81,7 +81,7 @@
     grid-template-columns: 1fr;
   }
 
-  .recebimentos-grid {
+  .items-grid {
     grid-template-columns: 1fr;
   }
 

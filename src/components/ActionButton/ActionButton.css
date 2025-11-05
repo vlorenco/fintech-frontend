@@ -1,0 +1,82 @@
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-btn svg {
+  flex-shrink: 0;
+}
+
+/* Editar */
+.action-btn-edit {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.action-btn-edit:hover:not(:disabled) {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Excluir */
+.action-btn-delete {
+  background-color: #ef4444;
+  color: white;
+}
+
+.action-btn-delete:hover:not(:disabled) {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Pausar */
+.action-btn-pause {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.action-btn-pause:hover:not(:disabled) {
+  background-color: #d97706;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+}
+
+/* Reativar */
+.action-btn-reactivate {
+  background-color: #10b981;
+  color: white;
+}
+
+.action-btn-reactivate:hover:not(:disabled) {
+  background-color: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Contribuir */
+.action-btn-contribute {
+  background-color: #8b5cf6;
+  color: white;
+}
+
+.action-btn-contribute:hover:not(:disabled) {
+  background-color: #7c3aed;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(139, 92, 246, 0.3);
+}

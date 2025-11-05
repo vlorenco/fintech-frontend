@@ -5,19 +5,27 @@ import {
   RecebimentosIcon,
   DespesasIcon,
   MetasIcon,
+  CategoriasIcon,
   LogoutIcon,
 } from "./Icons";
 
 import { useTheme } from "../../hooks/useTheme";
+import { useAuth } from "../../hooks/useAuth";
 import { useState } from "react";
 
 function Sidebar() {
   const { theme, toggleTheme } = useTheme();
+  const { logout } = useAuth();
   const [open, setOpen] = useState(false);
 
-  function handleLogout() {
-    console.log("logout...");
-  }
+  const handleLogout = async () => {
+    try {
+      await logout();
+      // O redirecionamento será feito automaticamente pelo AuthContext
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    }
+  };
 
   return (
     <>
@@ -66,6 +74,12 @@ function Sidebar() {
           to="/metas"
           icon={<MetasIcon className="small-icon" />}
           label="Metas"
+        />
+
+        <SidebarLink
+          to="/categorias"
+          icon={<CategoriasIcon className="small-icon" />}
+          label="Categorias"
         />
       </nav>
 

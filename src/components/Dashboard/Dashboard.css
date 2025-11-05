@@ -64,7 +64,7 @@
 
 .stat-value {
   margin-top: 0.75rem;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.2;
